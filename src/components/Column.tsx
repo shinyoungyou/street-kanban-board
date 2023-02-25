@@ -20,8 +20,9 @@ const Column: React.FC<ColumnProps> = ({ name, color, index, tasks, setTasks }) 
     const index = e.dataTransfer.getData("index");
     setTasks((prev) => {
       const task = prev.find((task) => task.id === index) as Task;
+      const next = prev.filter((task) => task.id !== index);
       return [
-        ...prev,
+        ...next,
         {
           ...task,
           column: name
