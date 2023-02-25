@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import Paper from "@mui/material/Paper";
 
@@ -9,10 +9,9 @@ interface TaskProps {
 }
 
 const TaskCompo: React.FC<TaskProps> = ({ index, title, color }) => {
-
-  const handleOnDrag = (e: React.DragEvent, index: string) => {
+  const handleOnDrag = useCallback((e: React.DragEvent, index: string) => {
     e.dataTransfer.setData("index", index);
-  };
+  }, [index]);
 
 
   return (
