@@ -12,9 +12,28 @@ interface ColumnProps {
   name: ColumnType;
   color: any;
   tasks: Task[];
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>
 }
 
-const Column: React.FC<ColumnProps> = ({ name, color, index, tasks }) => {
+const Column: React.FC<ColumnProps> = ({ name, color, index, tasks, setTasks }) => {
+  const handleOnDrop = (e: React.DragEvent) => {
+    const index = e.dataTransfer.getData("index");
+    setTasks((prev) => {
+      const task = prev.find((task) => task.id === index) as Task;
+      const next = prev.filter((task) => task.id !== index);
+      return [
+        ...next,
+        {
+          ...task,
+          column: name
+        }
+      ]
+    })
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
 
   const taskList = tasks.map((task, index) =>(   
     task.column === name &&  <TaskCompo key={task.id} title={task.title} color={task.color} index={task.id} />
@@ -29,6 +48,8 @@ const Column: React.FC<ColumnProps> = ({ name, color, index, tasks }) => {
       rowGap: '3vh',
       p: 2,
     }}
+    onDrop={handleOnDrop}
+    onDragOver={handleDragOver}
   >
     <Chip sx={{
       width: '200px',

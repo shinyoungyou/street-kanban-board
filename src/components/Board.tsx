@@ -21,7 +21,7 @@ const Board: React.FC = () => {
       }}
     >
     {columnList.map((column, index)=>(
-      <Column key={column.id} name={column.name} color={column.color} index={index} tasks={tasks} /> 
+      <Column key={column.id} name={column.name} color={column.color} index={index} tasks={tasks} setTasks={setTasks} /> 
     ))} 
     </Box>
   );
