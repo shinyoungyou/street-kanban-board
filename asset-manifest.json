@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/street-kanban-board/static/css/main.5ad0f3a9.css",
+    "main.js": "/street-kanban-board/static/js/main.080d7b1a.js",
+    "index.html": "/street-kanban-board/index.html",
+    "main.5ad0f3a9.css.map": "/street-kanban-board/static/css/main.5ad0f3a9.css.map",
+    "main.080d7b1a.js.map": "/street-kanban-board/static/js/main.080d7b1a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ad0f3a9.css",
+    "static/js/main.080d7b1a.js"
+  ]
+}
