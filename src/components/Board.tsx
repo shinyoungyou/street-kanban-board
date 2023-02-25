@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Column from "./Column";
-import { columnList } from '../data';
+import { Task } from "../utils/interfaces";
+import { generateTaskList, columnList } from '../data';
 
 import Box from "@mui/material/Box";
 
 const Board: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>(generateTaskList);
+
   return (
     <Box
       sx={{
@@ -18,7 +21,7 @@ const Board: React.FC = () => {
       }}
     >
     {columnList.map((column, index)=>(
-      <Column key={column.id} /> 
+      <Column key={column.id} name={column.name} color={column.color} index={index} tasks={tasks} /> 
     ))} 
     </Box>
   );
