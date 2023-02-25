@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import Paper from "@mui/material/Paper";
 
@@ -9,6 +9,10 @@ interface TaskProps {
 }
 
 const TaskCompo: React.FC<TaskProps> = ({ index, title, color }) => {
+  const handleOnDrag = useCallback((e: React.DragEvent, index: string) => {
+    e.dataTransfer.setData("index", index);
+  }, [index]);
+
 
   return (
     <Paper
@@ -20,6 +24,8 @@ const TaskCompo: React.FC<TaskProps> = ({ index, title, color }) => {
         width: '160px',
         minHeight: '70px' 
       }}
+      draggable
+      onDragStart={(e) => handleOnDrag(e, index)}
     >
       {title}
     </Paper>
