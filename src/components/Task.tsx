@@ -10,6 +10,11 @@ interface TaskProps {
 
 const TaskCompo: React.FC<TaskProps> = ({ index, title, color }) => {
 
+  const handleOnDrag = (e: React.DragEvent, index: string) => {
+    e.dataTransfer.setData("index", index);
+  };
+
+
   return (
     <Paper
       elevation={3}
@@ -20,6 +25,8 @@ const TaskCompo: React.FC<TaskProps> = ({ index, title, color }) => {
         width: '160px',
         minHeight: '70px' 
       }}
+      draggable
+      onDragStart={(e) => handleOnDrag(e, index)}
     >
       {title}
     </Paper>
